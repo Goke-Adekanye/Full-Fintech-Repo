@@ -57,7 +57,9 @@ const login = async (req, res) => {
         .json({ error: "Invalid password, Try again" });
     }
 
-    res.status(StatusCodes.OK).json(user);
+    const token = user.createJWT();
+
+    res.status(StatusCodes.OK).json({ token });
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
