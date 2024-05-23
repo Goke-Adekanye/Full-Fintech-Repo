@@ -46,7 +46,7 @@ const login = async (req, res) => {
     if (!userFound) {
       return res
         .status(StatusCodes.FORBIDDEN)
-        .json({ error: "Invalid credentials" });
+        .json({ error: "Invalid credentials, Try again" });
     }
 
     const isPasswordCorrect = await user.comparePassword(password);
@@ -54,7 +54,7 @@ const login = async (req, res) => {
     if (!isPasswordCorrect) {
       return res
         .status(StatusCodes.FORBIDDEN)
-        .json({ error: "Invalid credentials" });
+        .json({ error: "Invalid password, Try again" });
     }
 
     res.status(StatusCodes.OK).json(user);

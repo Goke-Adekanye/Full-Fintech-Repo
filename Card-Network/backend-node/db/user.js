@@ -34,7 +34,6 @@ const User = mongoose.model("User", userSchema);
 
 const GetUser = async (email) => {
   const user = await User.findOne({ email });
-  console.log(user);
   let userFound = false;
   if (user) {
     userFound = true;
