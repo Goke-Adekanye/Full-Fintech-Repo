@@ -1,5 +1,6 @@
-const { StatusCodes } = require("http-status-codes");
 const mongoose = require("mongoose");
+const { StatusCodes } = require("http-status-codes");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -18,10 +19,22 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// Pre-save hook for password hashing
+userSchema.pre("save", async function () {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Instance method for password comparison
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
+
 const User = mongoose.model("User", userSchema);
 
-const GetUser = async (rqx) => {
-  const user = await User.findOne({ email: rqx.email });
+const GetUser = async (email) => {
+  const user = await User.findOne({ email });
+  console.log(user);
   let userFound = false;
   if (user) {
     userFound = true;
@@ -32,7 +45,7 @@ const GetUser = async (rqx) => {
 };
 
 const CreateUser = async (body) => {
-  const { user, userFound } = await GetUser(body);
+  const { user, userFound } = await GetUser(body.email);
   if (userFound) {
     const error = new Error("User already exists");
     error.statusCode = StatusCodes.BAD_REQUEST; // Set the status code

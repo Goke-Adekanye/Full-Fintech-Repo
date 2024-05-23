@@ -41,10 +41,19 @@ const login = async (req, res) => {
         .json({ error: validationError });
     }
 
-    const { user, userFound } = await GetUser(req.body);
+    const { email, password } = req.body;
+    const { user, userFound } = await GetUser(email);
     if (!userFound) {
       return res
-        .status(StatusCodes.UNAUTHORIZED)
+        .status(StatusCodes.FORBIDDEN)
+        .json({ error: "Invalid credentials" });
+    }
+
+    const isPasswordCorrect = await user.comparePassword(password);
+
+    if (!isPasswordCorrect) {
+      return res
+        .status(StatusCodes.FORBIDDEN)
         .json({ error: "Invalid credentials" });
     }
 
