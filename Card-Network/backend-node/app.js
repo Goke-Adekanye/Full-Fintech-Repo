@@ -17,7 +17,7 @@ const connectDB = require("./db/connect"); // Database connection function
 const authenticateUser = require("./middleware/authentication"); // Authentication middleware
 
 // Routers
-// const authRouter = require("./routes/auth"); // Authentication routes
+const authRouter = require("./routes/auth"); // Authentication routes
 // const userRouter = require("./routes/user"); // User routes
 // const accountRouter = require("./routes/account"); // Account routes
 
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-// app.use("/api/v1/auth", authRouter); //
+app.use("/api/v1/auth", authRouter); //
 // app.use("/api/v1/users", authenticateUser, userRouter); // Authenticated routes
 // app.use("/api/v1/account", authenticateUser, accountRouter); // Authenticated routes
 
