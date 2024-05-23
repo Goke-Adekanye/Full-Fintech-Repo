@@ -28,14 +28,7 @@ const register = async (req, res) => {
     }
 
     const newUser = await User.create({ ...req.body });
-    // const token = newUser.createJWT();
-    const createdUser = {
-      id: newUser._id,
-      email: newUser.email,
-      created_at: newUser.createdAt,
-      updated_at: newUser.updatedAt,
-    };
-    res.status(StatusCodes.CREATED).json({ ...createdUser });
+    res.status(StatusCodes.CREATED).json();
   } catch (error) {
     res
       .status(StatusCodes.BAD_REQUEST)
