@@ -1,0 +1,358 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+  /* colors */
+  --tw-shadow: 0 0 #0000;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
+
+/* font-sizes */
+.text-xs {
+  font-size: 0.75rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* reset link */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* set up the body */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+  unicode-bidi: isolate;
+}
+
+/* general */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.h-screen {
+  min-height: 100vh;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.block {
+  display: block;
+}
+
+/* Auth */
+.auth {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  .auth-section__first {
+    padding: 24px;
+    grid-column: span 2 / span 2;
+    --tw-bg-opacity: 1;
+    background-color: rgb(245 247 248 / var(--tw-bg-opacity));
+
+    .form-area {
+      max-width: 425px;
+      width: 100%;
+
+      .auth-link {
+        font-weight: 700;
+        --tw-text-opacity: 1;
+        color: rgb(255 130 0 / var(--tw-text-opacity));
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+        font-size: 28px;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      form {
+        .input-area {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+          padding-bottom: 0.25rem;
+          padding-top: 0.25rem;
+          border-radius: 0.375rem;
+          --tw-bg-opacity: 1;
+          background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+
+          .input-container {
+            &:focus-within label {
+              font-size: 0.675rem;
+              --tw-scale-x: 1;
+              --tw-scale-y: 1;
+              --tw-translate-y: -1rem;
+              transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+                rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
+                skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+                scaleY(var(--tw-scale-y));
+            }
+
+            input {
+              padding: 1.25rem 0.625rem 0.625rem;
+              background-color: inherit;
+              border-width: 0;
+              border-top-left-radius: 0.5rem;
+              border-top-right-radius: 0.5rem;
+            }
+
+            label {
+              top: 1rem;
+              left: 0.625rem;
+              position: absolute;
+              font-size: 0.875rem;
+              z-index: 10;
+              color: rgb(107 114 128);
+              transform-origin: 0;
+              transition-duration: 0.3s;
+            }
+          }
+        }
+        .input-area.second {
+          margin-top: 1rem;
+        }
+
+        .auth-link__span {
+          margin-top: 0.5rem;
+        }
+
+        .auth-buttons {
+          margin-top: 0.75rem;
+
+          .auth-button__section {
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000,
+              0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+            .top-button {
+              --tw-text-opacity: 1;
+              color: rgb(255 255 255 / var(--tw-text-opacity));
+              font-size: 1rem;
+              padding: 1rem 0;
+              border-radius: 8px;
+              --tw-bg-opacity: 1;
+              background-color: rgb(255 130 0 / var(--tw-bg-opacity));
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              display: flex;
+              cursor: pointer;
+              text-transform: none;
+              border: none;
+            }
+          }
+
+          .auth-button__section.second {
+            margin-top: 1rem;
+
+            .top-button {
+              --tw-text-opacity: 1;
+              color: rgb(54 58 67 / var(--tw-text-opacity));
+              border: 1px solid rgb(225 227 229);
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .auth-section__second {
+    display: block;
+    position: relative;
+
+    .line-image {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+/* PAGE LOADER  */
+.page-loader {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --backdrop-filter-blur: blur(5px);
+  background-color: transparent;
+  backdrop-filter: var(--backdrop-filter-blur);
+  z-index: 999;
+  transition: opacity 0.5s ease;
+}
+.page-loader.fade-out {
+  opacity: 0;
+}
+
+.page-loader div {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  animation: zoomInOut 2s linear infinite;
+}
+.page-loader div:nth-child(1) {
+  height: 60px;
+  width: 60px;
+  border-color: var(--main-color);
+}
+.page-loader div:nth-child(2) {
+  height: 45px;
+  width: 45px;
+  border-color: var(--main-color);
+}
+.page-loader div:nth-child(3) {
+  height: 30px;
+  width: 30px;
+  border-color: var(--main-color);
+}
+
+@keyframes zoomInOut {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+}
+/* END OF PAGE LOADER  */
