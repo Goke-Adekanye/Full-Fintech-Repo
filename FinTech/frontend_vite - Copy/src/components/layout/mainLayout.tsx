@@ -8,6 +8,7 @@ const MainLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
     <main className="px-6 pb-6">
       <Header />
       <div className="max-w-screen-lg mx-auto">{children}</div>
+      <Footer />
     </main>
   );
 };
@@ -22,6 +23,17 @@ const Header = () => {
       </Link>
       <div className="logout">{getLogoutButton()}</div>
     </header>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="max-w-screen-lg mx-auto bg-auth-bg flex flex-wrap item-center justify-between min-h-[70px] rounded-md py-5 px-6 mt-5 text-sm font-bold">
+      <p>Ape Banking</p>
+      <p>
+        developed by <span className="text-orange-500"> Jvstblvck</span>
+      </p>
+    </div>
   );
 };
 
