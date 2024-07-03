@@ -4,6 +4,7 @@ import { accountUrl } from "@/utils/network";
 import { useEffect, useState } from "react";
 import { AccountType } from "@/utils/types";
 import AccountCard from "@/components/common/accountCard";
+import { Tab, TabContent } from "@/components/ui/tabs";
 
 type props = {
   updateDefaultAccount: (account: AccountType) => void;
@@ -17,6 +18,7 @@ const Accounts = ({ updateDefaultAccount }: props) => {
   const { getAddAccount } = useAddAccount();
   const [accounts, setAccounts] = useState<AccountType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("Accounts");
   const { axiosHandler } = useAxios();
   const [defaultAccount, setDefaultAccount] = useState(0);
 
@@ -73,7 +75,17 @@ const Accounts = ({ updateDefaultAccount }: props) => {
         {getAddAccount(completeOperation)}
       </div>
 
-      {getContent()}
+      <div className="mb-[68px]">{getContent()}</div>
+      {accounts.length > 0 && (
+        <>
+          <Tab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <TabContent
+            isActive={activeTab}
+            accounts={accounts}
+            onComplete={completeOperation}
+          />
+        </>
+      )}
     </div>
   );
 };

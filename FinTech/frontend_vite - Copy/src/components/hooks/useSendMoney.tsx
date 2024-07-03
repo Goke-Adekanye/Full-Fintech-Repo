@@ -17,7 +17,8 @@ import { formatAccountFormat, getAccountSelect } from "@/utils/helpers";
 import { useStore } from "../hoc/StoreProvider";
 import { toast } from "sonner";
 import SendMoneyConfirmation from "../common/sendMoneyConfirmation";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, SendHorizontal } from "lucide-react";
+import ProcessCard from "../common/ProcessCard";
 
 const useSendMoney = () => {
   const {
@@ -123,7 +124,10 @@ const useSendMoney = () => {
     return (
       <Dialog open={modalState}>
         <DialogTrigger onClick={() => setModalState(true)}>
-          <Button variant={"outline"}>Send Money</Button>
+          <ProcessCard
+            icon={<SendHorizontal className="text-auth-link" size={20} />}
+            title={"Transfer"}
+          />
         </DialogTrigger>
         <DialogContent customClose={closeModal}>
           <DialogHeader>

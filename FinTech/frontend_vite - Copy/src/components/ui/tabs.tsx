@@ -1,53 +1,75 @@
-import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
+import ProcessCard from "../common/ProcessCard";
+import { ReceiptText } from "lucide-react";
+import useSendMoney from "../hooks/useSendMoney";
+import useAddMoney from "@/pages/Account/hooks/useAddMoney";
+import { AccountType } from "@/utils/types";
 
-import { cn } from "@/lib/utils"
+interface TabProps {
+  activeTab: string;
+  setActiveTab: (arg0: string) => void;
+}
 
-const Tabs = TabsPrimitive.Root
+interface TabContentProps {
+  isActive: string;
+  accounts: AccountType[];
+  onComplete: () => void;
+}
+interface TabActionProps {
+  accounts: AccountType[];
+  onComplete: () => void;
+}
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(
-      "inline-flex h-10 items-center justify-center text-default-text/50",
-      className
-    )}
-    {...props}
-  />
-))
-TabsList.displayName = TabsPrimitive.List.displayName
+const Tablist = ["Accounts", "Transactions", "Beneficiaries"];
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap mr-6 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-slate-950 data-[state=active]:border-b  dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300 dark:data-[state=active]:bg-slate-950 dark:data-[state=active]:text-slate-50",
-      className
-    )}
-    {...props}
-  />
-))
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
+function Tab({ activeTab, setActiveTab }: TabProps) {
+  return (
+    <section className="-mb-px flex w-2/3 space-x-8 rounded-md bg-auth-section p-2">
+      {Tablist.map((item) => (
+        <section
+          className={`${
+            activeTab === item ? "text-auth-link bg-auth-lighter" : ""
+          } flex w-1/3 cursor-pointer transition-all duration-500  items-center justify-center space-x-2 whitespace-nowrap rounded-md p-3 text-center text-xs font-semibold`}
+          onClick={() => setActiveTab(item)}
+          key={item}
+        >
+          {item}
+        </section>
+      ))}
+    </section>
+  );
+}
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(
-      "mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
-      className
-    )}
-    {...props}
-  />
-))
-TabsContent.displayName = TabsPrimitive.Content.displayName
+function TabContent({ isActive, accounts, onComplete }: TabContentProps) {
+  switch (isActive) {
+    case "Accounts":
+      return <AccountActions accounts={accounts} onComplete={onComplete} />;
+    case "Transactions":
+      return <></>;
+    default:
+      return <AccountActions accounts={accounts} onComplete={onComplete} />;
+  }
+}
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+function AccountActions({ accounts, onComplete }: TabActionProps) {
+  const { getSendMoney } = useSendMoney();
+  const { getAddMoney } = useAddMoney();
+
+  return (
+    <section className="mt-3 rounded-md">
+      <section>
+        <h4 className="mb-[12px]">Accounts</h4>
+        <div className="grid gap-4 md:grid-cols-3">
+          {getSendMoney(accounts, onComplete)}
+          {getAddMoney(accounts, onComplete)}
+
+          <ProcessCard
+            icon={<ReceiptText className="text-auth-link" size={20} />}
+            title={"Bill Payments"}
+          />
+        </div>
+      </section>
+    </section>
+  );
+}
+
+export { Tab, TabContent };

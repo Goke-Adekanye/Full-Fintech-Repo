@@ -1,4 +1,5 @@
 import { LabelInput, LabelSelect } from "@/components/common/labelInput";
+import ProcessCard from "@/components/common/ProcessCard";
 import useAxios from "@/components/hooks/useAxios";
 import usePaystack, { Currency } from "@/components/hooks/usePaystack";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ import { AccountType } from "@/utils/types";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { FormEvent, useRef, useState } from "react";
 import { toast } from "sonner";
+import { ArrowBigDownDash } from "lucide-react";
 
 const useAddMoney = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -74,13 +76,11 @@ const useAddMoney = () => {
   const getAddMoney = (accounts: AccountType[], onComplete: () => void) => {
     return (
       <Dialog open={showDialog}>
-        <DialogTrigger>
-          <Button
-            className="bg-[#DF5B19] hover:bg-amber-900"
-            onClick={() => setShowDialog(true)}
-          >
-            Add Money
-          </Button>
+        <DialogTrigger onClick={() => setShowDialog(true)}>
+          <ProcessCard
+            icon={<ArrowBigDownDash className="text-auth-link" size={20} />}
+            title={"Deposit"}
+          />
         </DialogTrigger>
         <DialogContent
           className="sm:max-w-[425px]"
