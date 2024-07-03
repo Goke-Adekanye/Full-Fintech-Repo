@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AccountType } from "@/utils/types";
 import AccountCard from "@/components/common/accountCard";
 import { Tab, TabContent } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type props = {
   updateDefaultAccount: (account: AccountType) => void;
@@ -52,7 +53,7 @@ const Accounts = ({ updateDefaultAccount }: props) => {
   };
 
   const getContent = () => {
-    if (loading) return "Loading accounts";
+    if (loading) return <Skeleton />;
     if (accounts.length === 0) return "No accounts found";
     return (
       <div className="grid grid-cols-3 gap-5 my-5">
@@ -81,7 +82,7 @@ const Accounts = ({ updateDefaultAccount }: props) => {
           <Tab activeTab={activeTab} setActiveTab={setActiveTab} />
           <TabContent
             isActive={activeTab}
-            accounts={accounts}
+            accounts={[accounts[defaultAccount]]}
             onComplete={completeOperation}
           />
         </>

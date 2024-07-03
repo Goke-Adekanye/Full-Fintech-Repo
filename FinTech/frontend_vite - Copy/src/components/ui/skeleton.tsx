@@ -1,15 +1,15 @@
-import { cn } from "@/lib/utils"
-
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function Skeleton() {
   return (
-    <div
-      className={cn("animate-pulse rounded-md bg-slate-100 dark:bg-slate-800", className)}
-      {...props}
-    />
-  )
+    <div role="status" className="max-w-sm animate-slide-in-from-right">
+      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 }
 
-export { Skeleton }
+export { Skeleton };

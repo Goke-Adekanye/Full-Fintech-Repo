@@ -27,7 +27,7 @@ const Home = () => {
             <section className="flex items-center justify-between px-6  md:px-[52px]">
               <h1 className="hidden text-2xl md:block">
                 <span className="text-[#67696B]">Hello,</span>{" "}
-                <span className="text-[#101828]">
+                <span className="text-[#101828] capitalize">
                   {activeUser?.username || "user"}
                 </span>{" "}
                 👋🏾

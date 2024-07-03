@@ -30,6 +30,7 @@ export default {
       "auth-link": "rgb(255 130 0)",
       "auth-lighter": "rgb(255 237 213)",
       "auth-section": "rgb(245 247 248)",
+      "gray-200": "rgb(229 231 235)",
       "trans-credit": "rgb(134 239 172)",
       "trans-debit": "rgb(252 165 165)",
     },
