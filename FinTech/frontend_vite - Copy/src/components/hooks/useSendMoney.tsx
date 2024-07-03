@@ -81,6 +81,7 @@ const useSendMoney = () => {
       account_no: "",
       amount: "",
     });
+    setStage(0);
     setAccount(null);
     setVerifiedAccount(null);
   };
@@ -95,6 +96,7 @@ const useSendMoney = () => {
       (account) =>
         formatAccountFormat(account.currency, account.balance) === key
     );
+    // console.log(account);
     if (account) setAccount(account);
   };
 
@@ -137,15 +139,15 @@ const useSendMoney = () => {
                   <ChevronLeft />
                 </div>
               )}
-              {stage === 0 ? "Send Money" : "Confirm Payment"}
+              {stage === 0 ? "Bank Transfers" : "Confirm Payment"}
             </DialogTitle>
-            <DialogDescription>Sending money made easy</DialogDescription>
+            <DialogDescription></DialogDescription>
           </DialogHeader>
 
           {stage === 0 && (
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <LabelSelect
-                labelProps={{ children: "From Account" }}
+                labelProps={{ children: "Source Account:" }}
                 id="from_account_id"
                 selectProps={{
                   placeholder: "Select Account",
@@ -159,25 +161,27 @@ const useSendMoney = () => {
                 }}
               />
               {account && (
-                <LabelInput
-                  labelProps={{ children: "Account Number" }}
-                  inputProps={{
-                    name: "account_no",
-                    value: data.account_no,
-                    onChange: handleChange,
-                    ref: inputRef,
-                  }}
-                  id="account_number"
-                />
-              )}
-              {loading && !verifiedAccount ? (
-                <LoadingSpinner className="text-blue-500 mt-2" />
-              ) : (
-                verifiedAccount && (
-                  <p className="mt-2 text-blue-500 text-sm">
-                    Account Name: {verifiedAccount.email}
-                  </p>
-                )
+                <div>
+                  <LabelInput
+                    labelProps={{ children: "Beneficiary Account:" }}
+                    inputProps={{
+                      name: "account_no",
+                      value: data.account_no,
+                      onChange: handleChange,
+                      ref: inputRef,
+                    }}
+                    id="account_number"
+                  />
+                  {loading && !verifiedAccount ? (
+                    <LoadingSpinner className="w-full flex justify-end text-auth-link mt-1" />
+                  ) : (
+                    verifiedAccount && (
+                      <p className="w-full flex justify-end text-auth-link text-xs mt-1">
+                        Account Name: {verifiedAccount.email}
+                      </p>
+                    )
+                  )}
+                </div>
               )}
 
               {verifiedAccount && (

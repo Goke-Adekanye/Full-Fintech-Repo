@@ -10,7 +10,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "../ui/select";
 import { Textarea, TextareaProps } from "../ui/textarea";
 
@@ -30,7 +30,7 @@ export const LabelCustom: React.FC<LabelCustomProps> = ({
   return (
     <div className={mainClassName}>
       <Label
-        className={cn("mb-3 block font-normal", labelClassName)}
+        className={cn("mb-1 block font-bold text-xs", labelClassName)}
         htmlFor={id}
         {...labelProps}
       />
@@ -41,7 +41,7 @@ export const LabelCustom: React.FC<LabelCustomProps> = ({
 
 type LabelInputProps = {
   labelProps: React.ComponentPropsWithoutRef<typeof Label>;
-  inputProps: InputProps & { ref?: React.RefObject<HTMLInputElement>};
+  inputProps: InputProps & { ref?: React.RefObject<HTMLInputElement> };
   className?: string;
   id: string;
 };
