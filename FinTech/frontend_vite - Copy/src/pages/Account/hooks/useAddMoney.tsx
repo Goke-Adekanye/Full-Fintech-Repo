@@ -87,7 +87,7 @@ const useAddMoney = () => {
           customClose={() => setShowDialog(false)}
         >
           <DialogHeader>
-            <DialogTitle>Add Money</DialogTitle>
+            <DialogTitle>Deposit</DialogTitle>
           </DialogHeader>
           <form
             ref={form}
@@ -95,7 +95,7 @@ const useAddMoney = () => {
             className="space-y-5 mt-5"
           >
             <LabelSelect
-              labelProps={{ children: "From Account" }}
+              labelProps={{ children: "Source Account:" }}
               id="from_account_id"
               selectProps={{
                 placeholder: "Select Account",
@@ -105,12 +105,12 @@ const useAddMoney = () => {
               }}
             />
             <LabelInput
-              labelProps={{ children: "Amount" }}
+              labelProps={{ children: "Amount:" }}
               inputProps={{
                 name: "amount",
                 required: true,
                 type: "number",
-                placeholder: "Specify the amount to send",
+                placeholder: "Enter Amount",
               }}
               id={"amount"}
             />

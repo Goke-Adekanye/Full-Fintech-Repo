@@ -54,7 +54,7 @@ const useSendMoney = () => {
     );
 
     if (res) {
-      console.log(res, account);
+      // console.log(res, account);
       if (res.user_id === activeUser?._id) {
         return toast.error("You can't send money to yourself");
       }
