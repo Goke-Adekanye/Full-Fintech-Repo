@@ -48,7 +48,7 @@ const Home = () => {
               </section>
             </section>
 
-            <section className="mt-[40px] px-6 md:px-[52px]">
+            <section className="mt-[40px] h-96 overflow-y-auto px-6 md:px-[52px] border-t border-t-thin-slate no-scrollbar">
               <section className="">
                 <Accounts />
               </section>
