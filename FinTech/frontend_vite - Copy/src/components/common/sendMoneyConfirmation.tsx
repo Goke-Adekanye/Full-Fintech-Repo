@@ -1,6 +1,7 @@
 import { formatCurrency } from "@/utils/helpers";
 import { AccountType, VerifyAccountType } from "@/utils/types";
 import { Button } from "../ui/button";
+import { useStore } from "../hoc/StoreProvider";
 
 type props = {
   toAccount: VerifyAccountType;
@@ -10,15 +11,6 @@ type props = {
   onComplete: () => void;
 };
 
-const ContextViewer = ({ title, info }: { title: string; info: string }) => {
-  return (
-    <div className="grid grid-cols-2">
-      <p className="text-sm text-slate-700">{title}</p>
-      <h4>{info}</h4>
-    </div>
-  );
-};
-
 const SendMoneyConfirmation = ({
   toAccount,
   fromAccount,
@@ -26,18 +18,69 @@ const SendMoneyConfirmation = ({
   loading,
   onComplete,
 }: props) => {
+  const {
+    state: { activeUser },
+  } = useStore();
   return (
     <div className="space-y-3">
-      <ContextViewer title="From" info={fromAccount.currency} />
-      <ContextViewer title="To Account Number" info={toAccount.account_no} />
-      <ContextViewer title="To Account Identifier" info={toAccount.email} />
-      <ContextViewer title="To Account Currency" info={toAccount.currency} />
-      <ContextViewer title="Amount" info={formatCurrency(amount)} />
+      <section>
+        <div className="flex flex-col space-y-2 sm:flex-row sm:justify-between sm:space-y-0 md:items-center">
+          <div className="space-y-[4px] sm:w-[30%]">
+            <span className="block text-[12px] text-[#667085]">Source:</span>
+            <span className="block text-[14px]">{activeUser?.email}</span>
+            <span className="block text-[12px] text-[#667085]">
+              {fromAccount.account_no}
+            </span>
+          </div>
+          <div className="sm:w-[30%]">
+            <span className="block text-center text-[24px] font-semibold">
+              <span className="mr-[2px]">
+                {fromAccount.currency === "NGN" ? "₦" : "$"}
+              </span>
+              {formatCurrency(amount)}
+            </span>
+            <div className="flex items-center justify-between">
+              <span className="block h-[9px] w-[9px] rounded-full bg-[#12B76A]"></span>
+              <span className="block h-[1px] w-full bg-[#E4E4E4]"></span>
+              <span className="block h-[9px] w-[9px] rounded-full bg-[#12B76A]"></span>
+            </div>
+          </div>
+          <div className="space-y-[4px] sm:w-[30%]">
+            <span className="block text-[12px] text-[#667085]">Recipient:</span>
+            <span className="block text-[14px]">{toAccount.email}</span>
+            <span className="block text-[12px] text-[#667085]">
+              {toAccount.account_no}
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-[32px] mb-[20px] rounded-md bg-[#F7F7F7] px-[24px]">
+          <div className="flex flex-col border-b border-b-thin-slate py-4 sm:flex-row sm:items-center sm:justify-between">
+            <span className="text-sm text-slate-700">Currency:</span>
+            <span className="text-sm text-auth-link">{toAccount.currency}</span>
+          </div>
+          <div className="flex flex-col border-b border-b-thin-slate py-4 sm:flex-row sm:items-center sm:justify-between">
+            <span className="text-sm text-slate-700">Commission:</span>
+            <span className="text-sm text-auth-link">NIL</span>
+          </div>
+          <div className="flex flex-col py-4 sm:flex-row sm:items-center sm:justify-between">
+            <span className="text-sm text-slate-700">Total debit:</span>
+            <span className="text-sm font-semibold text-auth-link space">
+              <span className="mr-[2px]">
+                {fromAccount.currency === "NGN" ? "₦" : "$"}
+              </span>
+              {formatCurrency(amount)}
+            </span>
+          </div>
+        </div>
+      </section>
+
       <Button
         onClick={onComplete}
         className="w-full"
-        variant={"outline"}
+        variant={"secondary"}
         disabled={loading}
+        loading={loading}
       >
         {loading ? "Sending... Please wait!" : "Confirm"}
       </Button>

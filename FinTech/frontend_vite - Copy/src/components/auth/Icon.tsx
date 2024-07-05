@@ -4,6 +4,46 @@ interface LogoProps {
   changeIcon?: boolean;
 }
 
+export const TransactionIcon: React.FC<LogoProps> = () => {
+  return (
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="48" height="48" rx="24" fill="#FFF1E6"></rect>
+      <rect
+        x="16"
+        y="14"
+        width="16"
+        height="20"
+        rx="4"
+        stroke="#FF8200"
+        stroke-width="1.5"
+      ></rect>
+      <path
+        d="M20 19H28"
+        stroke="#FF8200"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      ></path>
+      <path
+        d="M20 24H28"
+        stroke="#FF8200"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      ></path>
+      <path
+        d="M20 29H24"
+        stroke="#FF8200"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      ></path>
+    </svg>
+  );
+};
 export const AccessLogo: React.FC<LogoProps> = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="107" height="26" fill="none">

@@ -24,6 +24,8 @@ export default {
       primary_hover: "#0941AE",
       "auth-button": "rgb(255 255 255)",
       "auth-button-two": "rgb(54 58 67)",
+      success: "rgb(134 239 172)",
+      danger: "rgb(252 165 165)",
     },
     backgroundColor: {
       "auth-bg": "rgb(255 255 255)",
@@ -39,7 +41,7 @@ export default {
         "0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
     },
     borderColor: {
-      "thin-slate": "1px solid rgb(225 227 229)",
+      "thin-slate": "rgb(225 227 229)",
       "orange-200": "rgb(254 215 170)",
     },
     extend: {

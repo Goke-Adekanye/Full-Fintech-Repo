@@ -61,7 +61,12 @@ const useUpdateUser = () => {
               inputProps={{ name: "username", required: true }}
             />
             <DialogFooter>
-              <Button disabled={loading} loading={loading} type="submit">
+              <Button
+                disabled={loading}
+                loading={loading}
+                variant={"secondary"}
+                type="submit"
+              >
                 Update
               </Button>
             </DialogFooter>

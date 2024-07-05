@@ -1,8 +1,8 @@
-import ProcessCard from "../common/ProcessCard";
-import { ReceiptText } from "lucide-react";
+// import { ReceiptText } from "lucide-react";
 import useSendMoney from "../hooks/useSendMoney";
 import useAddMoney from "@/pages/Account/hooks/useAddMoney";
 import { AccountType } from "@/utils/types";
+import Transaction from "@/pages/Account/Transactions";
 
 interface TabProps {
   activeTab: string;
@@ -44,6 +44,8 @@ function TabContent({ isActive, accounts, onComplete }: TabContentProps) {
     case "Accounts":
       return <AccountActions accounts={accounts} onComplete={onComplete} />;
     case "Transactions":
+      return <Transaction account={accounts[0]} />;
+    case "Beneficiaries":
       return <></>;
     default:
       return <AccountActions accounts={accounts} onComplete={onComplete} />;
@@ -61,11 +63,6 @@ function AccountActions({ accounts, onComplete }: TabActionProps) {
         <div className="grid gap-4 md:grid-cols-3">
           {getSendMoney(accounts, onComplete)}
           {getAddMoney(accounts, onComplete)}
-
-          <ProcessCard
-            icon={<ReceiptText className="text-auth-link" size={20} />}
-            title={"Bill Payments"}
-          />
         </div>
       </section>
     </section>

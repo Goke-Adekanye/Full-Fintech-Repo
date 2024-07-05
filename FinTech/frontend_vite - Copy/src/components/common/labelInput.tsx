@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { SelectItemsType } from "@/utils/types";
 import React from "react";
-import { Checkbox } from "../ui/checkbox";
 import { Input, InputProps } from "../ui/input";
 import { Label } from "../ui/label";
 import {
@@ -84,32 +83,6 @@ export const LabelTextArea: React.FC<LabelTextAreaProps> = ({
         id={id}
         {...inputRest}
       />
-    </div>
-  );
-};
-
-type LabelCheckboxProps = {
-  labelProps: React.ComponentPropsWithoutRef<typeof Label>;
-  checkboxProps: React.ComponentPropsWithoutRef<typeof Checkbox>;
-  className?: string;
-  id: string;
-};
-
-export const LabelCheckbox: React.FC<LabelCheckboxProps> = ({
-  labelProps,
-  checkboxProps: { className, ...inputRest },
-  className: mainClassName,
-  id,
-}) => {
-  return (
-    <div
-      className={cn(
-        "flex flex-row-reverse items-center gap-2 justify-end",
-        mainClassName
-      )}
-    >
-      <Label className="block font-normal" htmlFor={id} {...labelProps} />
-      <Checkbox className={className} id={id} {...inputRest} />
     </div>
   );
 };

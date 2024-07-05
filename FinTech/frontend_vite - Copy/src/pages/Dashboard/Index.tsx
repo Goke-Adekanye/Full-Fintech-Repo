@@ -1,14 +1,10 @@
 import { useStore } from "@/components/hoc/StoreProvider";
 import useUpdateUser from "@/components/hooks/useUpdateUser";
 import MainLayout from "@/components/layout/mainLayout";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Accounts from "../Account/Accounts";
-import { AccountType } from "@/utils/types";
 
 const Home = () => {
-  const [defaultAccount, setDefaultAccount] = useState<AccountType | null>(
-    null
-  );
   const { getUpdateUser, setDialogState } = useUpdateUser();
   const {
     state: { activeUser },
@@ -54,8 +50,7 @@ const Home = () => {
 
             <section className="mt-[40px] px-6 md:px-[52px]">
               <section className="">
-                <Accounts updateDefaultAccount={setDefaultAccount} />
-                {defaultAccount && ""}
+                <Accounts />
               </section>
             </section>
           </section>

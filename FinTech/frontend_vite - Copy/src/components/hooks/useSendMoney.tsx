@@ -139,7 +139,7 @@ const useSendMoney = () => {
                   <ChevronLeft />
                 </div>
               )}
-              {stage === 0 ? "Bank Transfers" : "Confirm Payment"}
+              {stage === 0 ? "Bank Transfers" : "Confirm Transfer"}
             </DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
@@ -173,7 +173,7 @@ const useSendMoney = () => {
                     id="account_number"
                   />
                   {loading && !verifiedAccount ? (
-                    <LoadingSpinner className="w-full flex justify-end text-auth-link mt-1" />
+                    <LoadingSpinner className=" text-auth-link mt-1" />
                   ) : (
                     verifiedAccount && (
                       <p className="w-full flex justify-end text-auth-link text-xs mt-1">
@@ -199,7 +199,7 @@ const useSendMoney = () => {
               <Button
                 className="mt-7 w-full"
                 disabled={loading || !data.amount}
-                loading={loading}
+                // loading={loading}
                 variant={"secondary"}
               >
                 Send

@@ -7,11 +7,11 @@ import AccountCard from "@/components/common/accountCard";
 import { Tab, TabContent } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 
-type props = {
-  updateDefaultAccount: (account: AccountType) => void;
-};
+// type props = {
+//   updateDefaultAccount: (account: AccountType) => void;
+// };
 
-const Accounts = ({ updateDefaultAccount }: props) => {
+const Accounts = () => {
   const [state, setState] = useState({
     sendMoneyDialog: false,
     addMoneyDialog: false,
@@ -42,10 +42,10 @@ const Accounts = ({ updateDefaultAccount }: props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (accounts.length > 0) updateDefaultAccount(accounts[defaultAccount]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accounts, defaultAccount]);
+  // useEffect(() => {
+  //   if (accounts.length > 0) updateDefaultAccount(accounts[defaultAccount]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [accounts, defaultAccount]);
 
   const completeOperation = () => {
     setState({ ...state, sendMoneyDialog: false, addMoneyDialog: false });
@@ -53,8 +53,13 @@ const Accounts = ({ updateDefaultAccount }: props) => {
   };
 
   const getContent = () => {
-    if (loading) return <Skeleton />;
-    if (accounts.length === 0) return "No accounts found";
+    if (loading)
+      return (
+        <div className="my-2">
+          <Skeleton />
+        </div>
+      );
+    if (accounts.length === 0) return <p>No Account Registered Yet!</p>;
     return (
       <div className="grid grid-cols-3 gap-5 my-5">
         {accounts.map((account, index) => (
