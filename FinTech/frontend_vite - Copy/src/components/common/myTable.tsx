@@ -18,7 +18,7 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
       {Object.keys(groupedTransactions).map((date) => (
         <section key={date} className="mt-6">
           <section>
-            <span className="block border-b border-b-thin-slate pb-1 text-[16px] text-[#696969]">
+            <span className="block border-b border-b-thin-slate pb-1 text-[16px] max-[257px]:text-[10px] max-[350px]:text-sm text-[#696969]">
               {formatDate(date.toString())}
             </span>
 
@@ -31,7 +31,7 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
                   <div>
                     <TransactionIcon />
                   </div>
-                  <div className="text-[11px]">
+                  <div className="max-[257px]:text-[7px] max-[350px]:text-[9px] text-[11px]">
                     <span className="block leading-loose">
                       {transaction.amount > 0 ? "CREDIT" : "DEBIT"}
                     </span>
@@ -39,7 +39,7 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
                   </div>
                 </div>
                 <span
-                  className={`block text-end text-sm ${
+                  className={`block text-end max-[350px]:text-[12px] text-sm ${
                     transaction.amount > 0 ? "text-success" : "text-danger"
                   }`}
                 >

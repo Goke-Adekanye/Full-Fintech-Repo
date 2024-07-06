@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { AccountType, TransactionType } from "@/utils/types";
-import TransactionTable from "../../components/common/myTable";
 import useAxios from "@/components/hooks/useAxios";
 import { accountUrl } from "@/utils/network";
 import LoadingSpinner from "@/components/common/loadingSpinner";
+import TransactionTable from "@/components/common/myTable";
 
 type props = {
   account: AccountType;

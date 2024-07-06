@@ -2,7 +2,7 @@ import { useStore } from "@/components/hoc/StoreProvider";
 import useUpdateUser from "@/components/hooks/useUpdateUser";
 import MainLayout from "@/components/layout/mainLayout";
 import { useEffect } from "react";
-import Accounts from "../Account/Accounts";
+import Accounts from "./Account/Accounts";
 
 const Home = () => {
   const { getUpdateUser, setDialogState } = useUpdateUser();

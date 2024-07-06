@@ -45,7 +45,7 @@ const Register = () => {
       accountInfoText={{
         initialText: "Have an account?",
         actionLink: "/login",
-        actionText: "Login internet banking",
+        actionText: "Login ape banking",
       }}
     />
   );

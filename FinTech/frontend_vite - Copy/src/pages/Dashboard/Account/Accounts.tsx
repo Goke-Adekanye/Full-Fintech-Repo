@@ -1,11 +1,11 @@
 import useAxios from "@/components/hooks/useAxios";
-import useAddAccount from "@/pages/Account/hooks/useAddAccount";
 import { accountUrl } from "@/utils/network";
 import { useEffect, useState } from "react";
 import { AccountType } from "@/utils/types";
 import AccountCard from "@/components/common/accountCard";
 import { Tab, TabContent } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
+import useAddAccount from "@/components/hooks/useAddAccount";
 
 const Accounts = () => {
   const [state, setState] = useState({

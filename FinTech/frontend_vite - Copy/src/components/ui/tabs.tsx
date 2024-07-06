@@ -1,8 +1,8 @@
 // import { ReceiptText } from "lucide-react";
+import Transaction from "@/pages/Dashboard/Account/Transactions";
 import useSendMoney from "../hooks/useSendMoney";
-import useAddMoney from "@/pages/Account/hooks/useAddMoney";
 import { AccountType } from "@/utils/types";
-import Transaction from "@/pages/Account/Transactions";
+import useAddMoney from "../hooks/useAddMoney";
 
 interface TabProps {
   activeTab: string;
@@ -28,7 +28,7 @@ function Tab({ activeTab, setActiveTab }: TabProps) {
         <section
           className={`${
             activeTab === item ? "text-auth-link bg-auth-lighter" : ""
-          } flex w-auto md:w-1/3 cursor-pointer transition-all duration-500  items-center justify-center space-x-2 whitespace-nowrap rounded-md p-3 text-center text-xs font-semibold`}
+          } flex w-auto md:w-1/3 cursor-pointer transition-all duration-500 items-center justify-center space-x-2 whitespace-nowrap rounded-md p-3 text-center text-xs font-semibold`}
           onClick={() => setActiveTab(item)}
           key={item}
         >

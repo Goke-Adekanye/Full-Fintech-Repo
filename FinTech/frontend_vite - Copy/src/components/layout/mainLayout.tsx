@@ -16,7 +16,7 @@ const Header = () => {
   const { getLogoutButton } = useLogout();
 
   return (
-    <header className="flex items-center justify-between h-16 max-[275px]:px-2 px-6">
+    <header className="flex items-center justify-between h-14 max-[275px]:px-2 px-6">
       <Link to="/">
         <img src="icon.png" alt="" className="h-[50px]" />
       </Link>
@@ -27,7 +27,7 @@ const Header = () => {
 
 const Footer = () => {
   return (
-    <div className="max-w-screen-lg mx-auto bg-auth-bg flex flex-wrap item-center justify-between min-h-[50px] rounded-md py-5 max-[275px]:px-2 px-6 mt-5 text-sm font-bold">
+    <div className="max-w-screen-lg mx-auto bg-auth-bg flex flex-wrap item-center justify-between min-h-[50px] rounded-md max-[230px]:py-3 py-5 max-[275px]:px-2 px-6 mt-5 max-[350px]:text-[12px] text-sm font-medium">
       <p>Ape Banking</p>
       <p>
         developed by <span className="text-orange-500"> Jvstblvck</span>

@@ -1,16 +1,17 @@
 "use client";
 
 import { FC, FormEvent, useRef } from "react";
-import { AccessLogo, InputIcon } from "./Icon";
+import { InputIcon } from "./Icon";
 import Input from "./Input";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 interface AuthType {
   buttonTitle?: string;
   showRemembered?: boolean;
   loading: boolean;
-  accountInfoText?: {
-    initialText?: string;
+  accountInfoText: {
+    initialText: string;
     actionText: string;
     actionLink: string;
   };
@@ -23,8 +24,8 @@ interface AuthType {
 const Auth: FC<AuthType> = ({
   buttonTitle = "Log In",
   accountInfoText = {
-    initialText: "Open savings account",
-    actionText: "Register on internet banking",
+    initialText: "No account?",
+    actionText: "Register on ape banking",
     actionLink: "/signup",
   },
   loading,
@@ -33,35 +34,30 @@ const Auth: FC<AuthType> = ({
   const form = useRef<HTMLFormElement>(null);
   return (
     <>
-      <section className="grid grid-cols-3">
-        <div className="p-6 bg-auth-section flex col-span-2 flex-col">
+      <section className="grid md:grid-cols-3">
+        <div className="p-6 bg-auth-section flex h-screen flex-col md:col-span-2">
           <div className="flex items-center justify-between">
             <div className="inline-block cursor-pointer">
-              <AccessLogo />
+              <img src="icon.png" alt="" className="h-50" />
             </div>
           </div>
           <div className="max-w-[425px] m-auto w-full">
-            <h1 className="mb-2 text-[28px]">
-              Welcome to Access Internet Banking
-            </h1>
+            <h1 className="mb-2 text-[28px]">Welcome to Ape Banking</h1>
             <p className="text-xs mb-4">
-              Sign in with your Internet Banking details or Access More login
-              details. Not registered on Internet Banking or Access More? Click
-              on register to get started
+              Sign in with your Ape Banking details. Not registered on Ape
+              Internet Banking? Click on register to get started
             </p>
             <p className="text-xs mb-4">
-              {accountInfoText.initialText && (
-                <>
-                  <span>No account?</span>
-                  <Link
-                    className="text-auth-link text-xs font-bold"
-                    to="/sign-up"
-                  >
-                    {" "}
-                    {accountInfoText.initialText}
-                  </Link>
-                </>
-              )}
+              <>
+                <span>{accountInfoText.initialText}</span>
+                <Link
+                  className="text-auth-link text-xs font-bold"
+                  to={accountInfoText.actionLink}
+                >
+                  {" "}
+                  {accountInfoText.actionText}
+                </Link>
+              </>
             </p>
             <form ref={form} onSubmit={(e) => onSubmit(e, form)}>
               <div>
@@ -92,29 +88,28 @@ const Auth: FC<AuthType> = ({
               </div>
 
               <div className="mt-3">
-                <section className="font-semibold rounded-lg shadow-button-shadow">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="text-base w-full py-4 px-0 rounded-lg justify-center items-center flex cursor-pointer border-none text-auth-button bg-auth-link"
-                  >
-                    {buttonTitle} {loading && "..."}
-                  </button>
-                </section>
-                <section className="font-semibold rounded-lg shadow-button-shadow mt-4">
-                  <Link
-                    to={accountInfoText.actionLink}
-                    className="text-base w-full py-4 px-0 rounded-lg justify-center items-center flex cursor-pointer border-none text-auth-button-two border-thin-slate"
-                  >
-                    {accountInfoText.actionText}
-                  </Link>
-                </section>
+                <Button
+                  disabled={loading}
+                  loading={loading}
+                  variant={"secondary"}
+                  type="submit"
+                  className="w-full"
+                  size={"auth"}
+                >
+                  {buttonTitle}
+                </Button>
+                <Link
+                  to={accountInfoText.actionLink}
+                  className="font-medium shadow-button-shadow mt-4 text-sm w-full py-4 px-0 rounded-lg justify-center items-center flex cursor-pointer border-none text-auth-button-two border-thin-slate"
+                >
+                  {accountInfoText.actionText}
+                </Link>
               </div>
             </form>
           </div>
         </div>
 
-        <div className="block relative">
+        <div className="relative hidden h-screen md:block">
           <div className="flex w-full items-center justify-center py-6">
             <img width={333} height={580} src="/iphone.png" alt="banner" />
           </div>
