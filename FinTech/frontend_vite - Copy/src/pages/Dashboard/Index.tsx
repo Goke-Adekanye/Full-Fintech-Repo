@@ -16,11 +16,10 @@ const Home = () => {
   }, [activeUser?.username, setDialogState]);
   return (
     <MainLayout>
-      <main>
+      <div>
         <section className="flex">
-          <div></div>
-          <section className="flex h-full w-full flex-1 flex-col py-[35px] rounded-md bg-auth-bg">
-            <section className="flex items-center justify-between px-6  md:px-[52px]">
+          <section className="flex h-full w-full flex-col py-[35px] rounded-md bg-auth-bg">
+            <section className="flex items-center justify-between max-[275px]:px-2 px-6  md:px-[52px]">
               <h1 className="hidden text-2xl md:block">
                 <span className="text-[#67696B]">Hello,</span>{" "}
                 <span className="text-[#101828] capitalize">
@@ -48,7 +47,7 @@ const Home = () => {
               </section>
             </section>
 
-            <section className="mt-[40px] h-96 overflow-y-auto px-6 md:px-[52px] border-t border-t-thin-slate no-scrollbar">
+            <section className="mt-[40px] h-96 overflow-y-auto max-[275px]:px-2 px-6 md:px-[52px] border-t border-t-thin-slate no-scrollbar">
               <section className="">
                 <Accounts />
               </section>
@@ -57,7 +56,7 @@ const Home = () => {
         </section>
 
         {getUpdateUser()}
-      </main>
+      </div>
     </MainLayout>
   );
 };

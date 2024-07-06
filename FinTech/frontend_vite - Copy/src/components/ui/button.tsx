@@ -13,7 +13,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-slate-50 hover:bg-primary_hover/70 dark:bg-black/20 dark:text-white/90 dark:hover:bg-black/30",
         outline:
-          "border border-orange-200 box-shadow-1 text-auth-link bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+          "h-7 md:h-10 px-3 md:px-6 border border-orange-200 box-shadow-1 text-auth-link bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
           "box-shadow-1 bg-auth-link text-white hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",

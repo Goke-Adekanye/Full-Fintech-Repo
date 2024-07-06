@@ -34,10 +34,14 @@ const Transaction = ({ account }: props) => {
   }, [account]);
 
   return (
-    <div className="mt-5">
-      <h1 className="text-2xl font-light">Transaction History</h1>
+    <div className="mt-3">
+      <h4 className="mb-[12px]">Transactions</h4>
       {loading ? (
         <LoadingSpinner className="text-orange-500" />
+      ) : transactions.length === 0 ? (
+        <section className="flex h-10 items-start justify-center">
+          <img src="Empty-Transaction.png" alt="" className="mt-10" />
+        </section>
       ) : (
         <TransactionTable transactions={transactions} />
       )}

@@ -23,12 +23,12 @@ const Tablist = ["Accounts", "Transactions", "Beneficiaries"];
 
 function Tab({ activeTab, setActiveTab }: TabProps) {
   return (
-    <section className="-mb-px flex w-2/3 space-x-8 rounded-md bg-auth-section p-2">
+    <section className="-mb-px flex md:w-2/3 w-full space-x-8 rounded-md bg-auth-section p-2 overflow-x-auto no-scrollbar">
       {Tablist.map((item) => (
         <section
           className={`${
             activeTab === item ? "text-auth-link bg-auth-lighter" : ""
-          } flex w-1/3 cursor-pointer transition-all duration-500  items-center justify-center space-x-2 whitespace-nowrap rounded-md p-3 text-center text-xs font-semibold`}
+          } flex w-auto md:w-1/3 cursor-pointer transition-all duration-500  items-center justify-center space-x-2 whitespace-nowrap rounded-md p-3 text-center text-xs font-semibold`}
           onClick={() => setActiveTab(item)}
           key={item}
         >

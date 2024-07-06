@@ -7,10 +7,6 @@ import AccountCard from "@/components/common/accountCard";
 import { Tab, TabContent } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// type props = {
-//   updateDefaultAccount: (account: AccountType) => void;
-// };
-
 const Accounts = () => {
   const [state, setState] = useState({
     sendMoneyDialog: false,
@@ -42,11 +38,6 @@ const Accounts = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (accounts.length > 0) updateDefaultAccount(accounts[defaultAccount]);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [accounts, defaultAccount]);
-
   const completeOperation = () => {
     setState({ ...state, sendMoneyDialog: false, addMoneyDialog: false });
     getAccounts();
@@ -59,9 +50,14 @@ const Accounts = () => {
           <Skeleton />
         </div>
       );
-    if (accounts.length === 0) return <p>No Account Registered Yet!</p>;
+    if (accounts.length === 0)
+      return (
+        <section className="flex h-10 items-start justify-center">
+          <img src="Empty-Account.png" alt="" className="mt-10" />
+        </section>
+      );
     return (
-      <div className="grid grid-cols-3 gap-5 my-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
         {accounts.map((account, index) => (
           <AccountCard
             {...account}
@@ -76,8 +72,8 @@ const Accounts = () => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between mt-5">
-        <h1 className="text-2xl font-light">Accounts</h1>
+      <div className="flex flex-col items-start space-y-3 min-[375px]:flex-row min-[375px]:items-center min-[375px]:justify-between mt-5">
+        <h2 className="font-light">Accounts</h2>
         {getAddAccount(completeOperation)}
       </div>
 
