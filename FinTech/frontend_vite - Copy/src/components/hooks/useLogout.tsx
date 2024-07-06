@@ -11,19 +11,21 @@ export const useLogout = () => {
   };
 
   const getLogoutButton = () => {
-    return <Button
-    className="rounded-full"
-    size="icon"
-    variant="ghost"
-    onClick={handleLogout}
-  >
-    <LogOutIcon className="w-4 h-4" />
-    <span className="sr-only">Logout</span>
-  </Button>
-  }
+    return (
+      <Button
+        className="rounded-full"
+        size="icon"
+        variant="secondary"
+        onClick={handleLogout}
+      >
+        <LogOutIcon className="w-4 h-4" />
+        <span className="sr-only">Logout</span>
+      </Button>
+    );
+  };
 
   return {
     handleLogout,
-    getLogoutButton
+    getLogoutButton,
   };
 };

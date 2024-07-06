@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { useLogout } from "../hooks/useLogout";
 import { Link } from "react-router-dom";
-import { Logo } from "../common/logo";
 
 const MainLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -18,8 +17,8 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between h-16 max-[275px]:px-2 px-6">
-      <Link className="brand" to="/">
-        <Logo />
+      <Link to="/">
+        <img src="icon.png" alt="" className="h-[50px]" />
       </Link>
       <div className="logout">{getLogoutButton()}</div>
     </header>
