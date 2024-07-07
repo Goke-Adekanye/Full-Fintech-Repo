@@ -22,9 +22,9 @@ const SendMoneyConfirmation = ({
     state: { activeUser },
   } = useStore();
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 max-sm:h-[430px] overflow-y-auto no-scrollbar">
       <section>
-        <div className="flex flex-col space-y-2 sm:flex-row sm:justify-between sm:space-y-0 md:items-center">
+        <div className="flex flex-col space-y-4 sm:flex-row sm:justify-between sm:space-y-0 md:items-center">
           <div className="space-y-[4px] sm:w-[30%]">
             <span className="block text-[12px] text-[#667085]">Source:</span>
             <span className="block text-[14px]">{activeUser?.email}</span>
@@ -55,15 +55,15 @@ const SendMoneyConfirmation = ({
         </div>
 
         <div className="mt-[32px] mb-[20px] rounded-md bg-[#F7F7F7] px-[24px]">
-          <div className="flex flex-col border-b border-b-thin-slate py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex border-b border-b-thin-slate py-4 flex-row items-center justify-between">
             <span className="text-sm text-slate-700">Currency:</span>
             <span className="text-sm text-auth-link">{toAccount.currency}</span>
           </div>
-          <div className="flex flex-col border-b border-b-thin-slate py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex border-b border-b-thin-slate py-4 flex-row items-center justify-between">
             <span className="text-sm text-slate-700">Commission:</span>
             <span className="text-sm text-auth-link">NIL</span>
           </div>
-          <div className="flex flex-col py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex py-4 flex-row items-center justify-between">
             <span className="text-sm text-slate-700">Total debit:</span>
             <span className="text-sm font-semibold text-auth-link space">
               <span className="mr-[2px]">
