@@ -10,7 +10,7 @@ interface AuthType {
   buttonTitle?: string;
   showRemembered?: boolean;
   loading: boolean;
-  accountInfoText: {
+  accountInfoText?: {
     initialText: string;
     actionText: string;
     actionLink: string;
