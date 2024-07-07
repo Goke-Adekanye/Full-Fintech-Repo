@@ -35,8 +35,8 @@ const ProtectedRoute = () => {
 
   if (loading) {
     return (
-      <div className="w-full h-dvh flex items-center justify-center">
-        <PuffLoader className="text-black" />
+      <div className="w-full h-screen flex max-sm:items-center items-center justify-center">
+        <PuffLoader className="text-auth-link h-10 w-10" />
       </div>
     );
   }

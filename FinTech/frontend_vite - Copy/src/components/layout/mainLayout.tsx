@@ -16,7 +16,7 @@ const Header = () => {
   const { getLogoutButton } = useLogout();
 
   return (
-    <header className="flex items-center justify-between h-14 max-[275px]:px-2 px-6">
+    <header className="flex items-center justify-between h-14 max-[275px]:px-2 px-6 mb-5 bg-auth-bg max-w-screen-lg mx-auto">
       <Link to="/">
         <img src="icon.png" alt="" className="h-[50px]" />
       </Link>
