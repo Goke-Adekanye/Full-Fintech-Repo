@@ -34,9 +34,10 @@ export interface VerifyAccountType extends AccountType {
 }
 
 export interface TransactionType {
-  amount: number;
-  created_at: string;
   _id: string;
+  amount: number;
+  username: string;
+  created_at: string;
 }
 
 export interface BeneficiaryType {

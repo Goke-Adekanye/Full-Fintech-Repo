@@ -1,7 +1,7 @@
 import useAxios from "@/components/hooks/useAxios";
 import { accountUrl } from "@/utils/network";
 import { useEffect, useState } from "react";
-import { AccountType } from "@/utils/types";
+import { AccountType, BeneficiaryType } from "@/utils/types";
 import AccountCard from "@/components/common/accountCard";
 import { Tab, TabContent } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -14,6 +14,7 @@ const Accounts = () => {
   });
   const { getAddAccount } = useAddAccount();
   const [accounts, setAccounts] = useState<AccountType[]>([]);
+  const [beneficiaries, setBeneficiaries] = useState<BeneficiaryType[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Accounts");
   const { axiosHandler } = useAxios();
@@ -33,10 +34,29 @@ const Accounts = () => {
     }
   };
 
+  const getBeneficiaries = async (account: AccountType) => {
+    const res = await axiosHandler<BeneficiaryType[]>(
+      accountUrl.beneficiaries,
+      "POST",
+      { account_id: account._id },
+      true
+    );
+    if (res) {
+      setBeneficiaries(res);
+    }
+  };
+
   useEffect(() => {
     getAccounts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (accounts.length > 0) {
+      getBeneficiaries(accounts[defaultAccount]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accounts, defaultAccount]);
 
   const completeOperation = () => {
     setState({ ...state, sendMoneyDialog: false, addMoneyDialog: false });
@@ -84,6 +104,7 @@ const Accounts = () => {
           <TabContent
             isActive={activeTab}
             accounts={[accounts[defaultAccount]]}
+            beneficiaries={beneficiaries}
             onComplete={completeOperation}
           />
         </>

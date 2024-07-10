@@ -62,7 +62,7 @@ const Beneficiaries = ({ account }: props) => {
         <section className="rounded-md p-2 max-w-lg">
           {beneficiaries.map((item) => (
             <div
-              className="rounded bg-auth-bg mb-6 p-2 box-shadow-1 border-l-[6px] border-orange-200"
+              className="rounded bg-auth-bg mb-6 p-2 box-shadow-3 border-l-[6px] border-orange-200"
               key={item._id}
             >
               <div className="flex items-center justify-between align-middle">
@@ -75,7 +75,7 @@ const Beneficiaries = ({ account }: props) => {
                   </div>
                 </div>
                 <button
-                  className={`max-[350px]:text-[10px] text-xs font-bold py-[1px] max-[350px]:px-2 px-4 rounded-xl  border border-l-thin-slate bg-auth-link hover:bg-trans-debit transition-all duration-500 text-white`}
+                  className={`max-[350px]:text-[10px] text-xs font-bold py-[1px] px-2 rounded-xl  border border-l-thin-slate bg-auth-link hover:bg-trans-debit transition-all duration-500 text-white`}
                   type="button"
                   onClick={() => deleteBeneficiaries(item._id)}
                   disabled={loading}

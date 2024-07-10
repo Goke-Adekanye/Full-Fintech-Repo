@@ -32,8 +32,10 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
                     <TransactionIcon />
                   </div>
                   <div className="max-[257px]:text-[7px] max-[350px]:text-[9px] text-[11px]">
-                    <span className="block leading-loose">
-                      {transaction.amount > 0 ? "CREDIT" : "DEBIT"}
+                    <span className="block leading-loose uppercase">
+                      {transaction.amount > 0
+                        ? `RECEIVED FROM ${transaction.username}`
+                        : `SENT TO ${transaction.username}`}
                     </span>
                     <span className="block">{transaction._id}</span>
                   </div>

@@ -1,10 +1,10 @@
 import { formatCurrency } from "@/utils/helpers";
-import { AccountType, VerifyAccountType } from "@/utils/types";
+import { AccountType, BeneficiaryType, VerifyAccountType } from "@/utils/types";
 import { Button } from "../ui/button";
 import { useStore } from "../hoc/StoreProvider";
 
 type props = {
-  toAccount: VerifyAccountType;
+  toAccount: VerifyAccountType | BeneficiaryType;
   fromAccount: AccountType;
   amount: string;
   loading?: boolean;
@@ -22,7 +22,7 @@ const SendMoneyConfirmation = ({
     state: { activeUser },
   } = useStore();
   return (
-    <div className="space-y-3 max-sm:h-[430px] overflow-y-auto no-scrollbar">
+    <div className="space-y-3 max-sm:max-h-[430px] overflow-y-auto no-scrollbar">
       <section>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-between sm:space-y-0 md:items-center">
           <div className="space-y-[4px] sm:w-[30%]">
@@ -57,7 +57,9 @@ const SendMoneyConfirmation = ({
         <div className="mt-[32px] mb-[20px] rounded-md bg-[#F7F7F7] px-[24px]">
           <div className="flex border-b border-b-thin-slate py-4 flex-row items-center justify-between">
             <span className="text-sm text-slate-700">Currency:</span>
-            <span className="text-sm text-auth-link">{toAccount.currency}</span>
+            <span className="text-sm text-auth-link">
+              {fromAccount.currency}
+            </span>
           </div>
           <div className="flex border-b border-b-thin-slate py-4 flex-row items-center justify-between">
             <span className="text-sm text-slate-700">Commission:</span>

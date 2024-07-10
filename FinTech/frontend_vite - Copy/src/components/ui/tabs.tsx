@@ -2,7 +2,7 @@ import Transaction from "@/pages/Dashboard/Account/Transactions";
 import Beneficiaries from "@/pages/Dashboard/Account/Beneficiaries";
 import useSendMoney from "../hooks/useSendMoney";
 import useAddMoney from "../hooks/useAddMoney";
-import { AccountType } from "@/utils/types";
+import { AccountType, BeneficiaryType } from "@/utils/types";
 
 interface TabProps {
   activeTab: string;
@@ -12,10 +12,12 @@ interface TabProps {
 interface TabContentProps {
   isActive: string;
   accounts: AccountType[];
+  beneficiaries: BeneficiaryType[];
   onComplete: () => void;
 }
 interface TabActionProps {
   accounts: AccountType[];
+  beneficiaries: BeneficiaryType[];
   onComplete: () => void;
 }
 
@@ -39,20 +41,41 @@ function Tab({ activeTab, setActiveTab }: TabProps) {
   );
 }
 
-function TabContent({ isActive, accounts, onComplete }: TabContentProps) {
+function TabContent({
+  isActive,
+  accounts,
+  beneficiaries,
+  onComplete,
+}: TabContentProps) {
   switch (isActive) {
     case "Accounts":
-      return <AccountActions accounts={accounts} onComplete={onComplete} />;
+      return (
+        <AccountActions
+          accounts={accounts}
+          beneficiaries={beneficiaries}
+          onComplete={onComplete}
+        />
+      );
     case "Transactions":
       return <Transaction account={accounts[0]} />;
     case "Beneficiaries":
       return <Beneficiaries account={accounts[0]} />;
     default:
-      return <AccountActions accounts={accounts} onComplete={onComplete} />;
+      return (
+        <AccountActions
+          accounts={accounts}
+          beneficiaries={beneficiaries}
+          onComplete={onComplete}
+        />
+      );
   }
 }
 
-function AccountActions({ accounts, onComplete }: TabActionProps) {
+function AccountActions({
+  accounts,
+  beneficiaries,
+  onComplete,
+}: TabActionProps) {
   const { getSendMoney } = useSendMoney();
   const { getAddMoney } = useAddMoney();
 
@@ -61,7 +84,7 @@ function AccountActions({ accounts, onComplete }: TabActionProps) {
       <section>
         <h4 className="mb-[12px]">Accounts</h4>
         <div className="grid gap-4 md:grid-cols-3">
-          {getSendMoney(accounts, onComplete)}
+          {getSendMoney(accounts, beneficiaries, onComplete)}
           {getAddMoney(accounts, onComplete)}
         </div>
       </section>
