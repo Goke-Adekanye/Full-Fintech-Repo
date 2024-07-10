@@ -18,4 +18,7 @@ export const accountUrl = {
   addMoney: baseUrl + "/account" + "/add-money",
   verifyAccountNumber: baseUrl + "/account" + "/get-account-by-number",
   transactions: baseUrl + "/account" + "/transactions",
+  addBeneficiary: baseUrl + "/account" + "/add-beneficiary",
+  beneficiaries: baseUrl + "/account" + "/beneficiaries",
+  deleteBeneficiary: baseUrl + "/account" + "/delete-beneficiary",
 };

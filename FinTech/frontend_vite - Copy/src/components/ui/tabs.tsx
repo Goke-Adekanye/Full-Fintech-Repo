@@ -1,8 +1,9 @@
 // import { ReceiptText } from "lucide-react";
 import Transaction from "@/pages/Dashboard/Account/Transactions";
+import Beneficiaries from "@/pages/Dashboard/Account/Beneficiaries";
 import useSendMoney from "../hooks/useSendMoney";
-import { AccountType } from "@/utils/types";
 import useAddMoney from "../hooks/useAddMoney";
+import { AccountType } from "@/utils/types";
 
 interface TabProps {
   activeTab: string;
@@ -46,7 +47,7 @@ function TabContent({ isActive, accounts, onComplete }: TabContentProps) {
     case "Transactions":
       return <Transaction account={accounts[0]} />;
     case "Beneficiaries":
-      return <></>;
+      return <Beneficiaries account={accounts[0]} />;
     default:
       return <AccountActions accounts={accounts} onComplete={onComplete} />;
   }

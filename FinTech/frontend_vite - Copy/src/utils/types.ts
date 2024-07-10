@@ -38,3 +38,10 @@ export interface TransactionType {
   created_at: string;
   _id: string;
 }
+
+export interface BeneficiaryType {
+  _id: string;
+  account_no: number;
+  email: string;
+  created_at: string;
+}
