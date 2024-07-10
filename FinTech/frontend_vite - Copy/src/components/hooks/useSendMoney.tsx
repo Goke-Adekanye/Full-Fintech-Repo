@@ -17,7 +17,7 @@ import { formatAccountFormat, getAccountSelect } from "@/utils/helpers";
 import { useStore } from "../hoc/StoreProvider";
 import { toast } from "sonner";
 import SendMoneyConfirmation from "../common/sendMoneyConfirmation";
-import { ChevronLeft, SendHorizontal } from "lucide-react";
+import { ChevronLeft, SendHorizontal, ReceiptText } from "lucide-react";
 import ProcessCard from "../common/ProcessCard";
 
 const useSendMoney = () => {
@@ -64,6 +64,25 @@ const useSendMoney = () => {
       }
 
       setVerifiedAccount(res);
+    }
+  };
+
+  const handleSaveBeneficiary = async () => {
+    const payload = {
+      from_account_id: account?._id,
+      to_email: verifiedAccount?.email,
+      to_account_no: verifiedAccount?.account_no,
+    };
+
+    const res = await axiosHandler<VerifyAccountType>(
+      accountUrl.addBeneficiary,
+      "post",
+      payload,
+      true
+    );
+
+    if (res) {
+      toast.success("Beneficiary saved");
     }
   };
 
@@ -185,16 +204,29 @@ const useSendMoney = () => {
               )}
 
               {verifiedAccount && (
-                <LabelInput
-                  labelProps={{ children: "Amount" }}
-                  inputProps={{
-                    name: "amount",
-                    value: data.amount,
-                    placeholder: "Enter amount",
-                    onChange: handleChange,
-                  }}
-                  id="amount"
-                />
+                <div>
+                  <LabelInput
+                    labelProps={{ children: "Amount" }}
+                    inputProps={{
+                      name: "amount",
+                      value: data.amount,
+                      placeholder: "Enter amount",
+                      onChange: handleChange,
+                    }}
+                    id="amount"
+                  />
+                  <div className="w-full mt-1 flex justify-end items-center ">
+                    <div
+                      className="cursor-pointer flex justify-end items-center"
+                      onClick={handleSaveBeneficiary}
+                    >
+                      <ReceiptText className="text-[#12B76A] h-4 w-4" />
+                      <span className="block text-xs ml-1 opacity-90">
+                        Save as beneficiary
+                      </span>
+                    </div>
+                  </div>
+                </div>
               )}
               <Button
                 className="mt-7 w-full"

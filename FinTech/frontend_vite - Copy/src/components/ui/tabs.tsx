@@ -1,4 +1,3 @@
-// import { ReceiptText } from "lucide-react";
 import Transaction from "@/pages/Dashboard/Account/Transactions";
 import Beneficiaries from "@/pages/Dashboard/Account/Beneficiaries";
 import useSendMoney from "../hooks/useSendMoney";
