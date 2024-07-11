@@ -97,7 +97,7 @@ const Accounts = () => {
         {getAddAccount(completeOperation)}
       </div>
 
-      <div className="mb-[68px]">{getContent()}</div>
+      <div className="mb-[50px]">{getContent()}</div>
       {accounts.length > 0 && (
         <>
           <Tab activeTab={activeTab} setActiveTab={setActiveTab} />

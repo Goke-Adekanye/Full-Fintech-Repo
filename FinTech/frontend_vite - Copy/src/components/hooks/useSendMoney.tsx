@@ -109,6 +109,7 @@ const useSendMoney = () => {
     setStage(0);
     setAccount(null);
     setVerifiedAccount(null);
+    setBeneficiary(null);
   };
 
   const onAccountSelect = (accounts: AccountType[], key: string) => {
@@ -209,7 +210,7 @@ const useSendMoney = () => {
                   <div className="space-y-4">
                     {beneficiaries.length > 0 && (
                       <LabelSelect
-                        labelProps={{ children: "Select Beneficiary:" }}
+                        labelProps={{ children: "Choose Beneficiary:" }}
                         id="beneficiaries"
                         selectProps={{
                           placeholder: "Select",

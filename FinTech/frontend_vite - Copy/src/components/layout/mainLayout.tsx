@@ -30,7 +30,7 @@ const Footer = () => {
     <div className="max-w-screen-lg mx-auto bg-auth-bg flex flex-wrap item-center justify-between min-h-[50px] rounded-md max-[230px]:py-3 py-5 max-[275px]:px-2 px-6 mt-5 max-[350px]:text-[12px] text-sm font-medium">
       <p>Ape Banking</p>
       <p>
-        developed by <span className="text-orange-500"> Jvstblvck</span>
+        crafted by <span className="text-orange-500">Goke A.</span>
       </p>
     </div>
   );
