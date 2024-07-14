@@ -29,7 +29,7 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
-### NAVIGATE /FinTech/frontend_vite - Copy
+# NAVIGATE /FinTech/frontend_vite - Copy
 npm install
 
 ### Project Overview
@@ -37,19 +37,28 @@ This project utilizes a powerful combination of technologies to deliver an excep
 
 ### Key Features
 Account Management: Users can seamlessly manage their accounts, including viewing account details and balances.
+
 Fund Transfer: Users can easily transfer funds between their own accounts or to other beneficiaries.
+
 Fund Deposit: Users can deposit funds into their accounts, ensuring smooth financial management.
+
 Beneficiary Management: Users can save and manage their beneficiaries, making fund transfers more convenient.
+
 Transaction History: Users can access their complete transaction history, providing transparency and easy record-keeping.
 
 ### Technologies Used
 React: A JavaScript library for building user interfaces, providing a component-based architecture and efficient rendering.
+
 TypeScript: A statically typed superset of JavaScript, adding type safety to the codebase and improving maintainability and scalability.
+
 Tailwind CSS: A utility-first CSS framework that enables rapid styling and ensures a sleek, responsive, and scalable user interface.
 
 ### Benefits
 Interactive UI: The combination of React and TypeScript creates an engaging and responsive user interface, enhancing the overall user experience.
+
 Type Safety: TypeScript provides type safety, catching errors during development and improving code quality and maintainability.
+
 Rapid Styling: Tailwind CSS allows for efficient and consistent styling, enabling developers to rapidly build and iterate on the application's design.
+
 Scalability: The chosen technologies and architecture ensure that the application can scale to accommodate growing user needs and feature requirements.
 By leveraging these powerful technologies, the project delivers a robust and user-friendly platform for managing financial accounts and transactions.
