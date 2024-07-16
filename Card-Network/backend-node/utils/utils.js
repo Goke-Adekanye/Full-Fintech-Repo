@@ -1,3 +1,13 @@
+// Define the collections object
+const Collections = {
+  CardGenerationService: "CardGenerationService",
+};
+
+// Define the service list object
+const serviceList = {
+  [Collections.CardGenerationService]: Collections.CardGenerationService,
+};
+
 // Define the function to validate the request body
 const validateRequestBody = (schema, body) => {
   const { error } = schema.validate(body);
@@ -10,4 +20,4 @@ const validateRequestBody = (schema, body) => {
   return null;
 };
 
-module.exports = { validateRequestBody };
+module.exports = { Collections, serviceList, validateRequestBody };
