@@ -33,7 +33,7 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 
 // Instance method for creating JWT
 userSchema.methods.createJWT = function () {
-  return jwt.sign({ user_id: this._id }, process.env.JWT_SECRET, {
+  return jwt.sign({ email: this.email }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_LIFETIME,
   });
 };
@@ -52,7 +52,7 @@ const GetUser = async (email) => {
 };
 
 const CreateUser = async (body) => {
-  const { user, userFound } = await GetUser(body.email);
+  const { userFound } = await GetUser(body.email);
   if (userFound) {
     const error = new Error("User already exists");
     error.statusCode = StatusCodes.BAD_REQUEST; // Set the status code
@@ -63,4 +63,4 @@ const CreateUser = async (body) => {
   return newUser;
 };
 
-module.exports = { GetUser, CreateUser };
+module.exports = { User, GetUser, CreateUser };

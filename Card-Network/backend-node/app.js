@@ -18,8 +18,7 @@ const authenticateUser = require("./middleware/authentication"); // Authenticati
 
 // Routers
 const authRouter = require("./routes/auth"); // Authentication routes
-// const userRouter = require("./routes/user"); // User routes
-// const accountRouter = require("./routes/account"); // Account routes
+const userRouter = require("./routes/user"); // User routes
 
 // Error handler middleware
 const notFoundMiddleware = require("./middleware/not-found"); // Handle 404 Not Found errors
@@ -46,7 +45,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/v1/auth", authRouter); //
-// app.use("/api/v1/users", authenticateUser, userRouter); // Authenticated routes
+app.use("/api/v1/users", authenticateUser, userRouter); // Authenticated routes
 // app.use("/api/v1/account", authenticateUser, accountRouter); // Authenticated routes
 
 // Middleware for handling 404 Not Found errors

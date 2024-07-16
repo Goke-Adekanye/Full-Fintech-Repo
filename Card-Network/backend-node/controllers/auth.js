@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const Joi = require("joi");
-const { CreateUser, GetUser } = require("../db/user");
 const { validateRequestBody } = require("../utils/utils");
+const { CreateUser, GetUser } = require("../models/user");
 
 const userValidation = Joi.object({
   email: Joi.string().email().required(),
