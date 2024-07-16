@@ -28,6 +28,7 @@ export default {
       danger: "rgb(252 165 165)",
     },
     backgroundColor: {
+      white: "white",
       "auth-bg": "rgb(255 255 255)",
       "auth-link": "rgb(255 130 0)",
       "auth-lighter": "rgb(255 237 213)",

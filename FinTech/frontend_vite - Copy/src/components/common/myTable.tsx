@@ -31,7 +31,7 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
                   <div>
                     <TransactionIcon />
                   </div>
-                  <div className="max-[257px]:text-[7px] max-[350px]:text-[9px] text-[11px]">
+                  <div className="max-[275px]:text-[7px] max-[300px]:text-[8px] max-[400px]:text-[9px] text-[11px]">
                     <span className="block leading-loose uppercase">
                       {transaction.amount > 0
                         ? `RECEIVED FROM ${transaction.username}`
@@ -41,7 +41,7 @@ const TransactionTable: React.FC<TransactionListProps> = ({ transactions }) => {
                   </div>
                 </div>
                 <span
-                  className={`block text-end max-[350px]:text-[12px] text-sm ${
+                  className={`block text-end max-[350px]:text-[12px] max-[300px]:text-[10px] text-sm ${
                     transaction.amount > 0 ? "text-success" : "text-danger"
                   }`}
                 >
